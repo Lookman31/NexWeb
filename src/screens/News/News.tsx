@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export const News = (): JSX.Element => {
   const newsData = [
-    // ข้อมูลข่าวทั้งหมด (id 1-6)
+    
     {
       id: 1,
       title: "INZOI วางจำหน่ายในวันที่ 20 สิงหาคม 2568 เวอร์ชั่น MAC",
@@ -56,7 +56,7 @@ export const News = (): JSX.Element => {
   return (
     <div className="min-h-screen bg-white text-black flex flex-col">
       <main className="container mx-auto px-4 py-12 flex-grow">
-        {/* ✅ Breadcrumb */}
+        
         <div className="text-sm text-gray-500 mb-4">
           <Link to="/" className="hover:text-[#fdb813] font-medium">
             Home
@@ -65,13 +65,13 @@ export const News = (): JSX.Element => {
           <span className="font-semibold ">News / Events</span>
         </div>
 
-        {/* ✅ Title */}
+        
         <div className="flex items-center justify-center space-x-4 mb-8">
           <div className="w-3 h-16 bg-[#fdb813] flex-shrink-0" />
           <h1 className="text-4xl font-bold text-center">NEWS / EVENTS</h1>
         </div>
 
-        {/* ✅ News Grid */}
+        
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {newsData.map((news) => (
             <Link

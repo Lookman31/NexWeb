@@ -1,10 +1,11 @@
 // import React from "react";
 
 const quickLinks = [
-  { label: "Home", href: "/" },
-  { label: "News", href: "/news" },
-  { label: "Service", href: "/" },
-  { label: "Portfolio", href: "/" },
+  { label: "Home"  },
+  // { label: "News"  },
+  { label: "Service"  },
+  { label: "Portfolio"  },
+  { label: "businessunits"  },
 ];
 
 const legalLinks = [
@@ -20,7 +21,7 @@ const contactInfo = [
 const socialMedia = [
   { icon: "facebook.jpg", url: "https://www.facebook.com/NexStudioProduction" },
   { icon: "youtube.png", url: "https://www.youtube.com/@NextzStudio" },
-  { icon: "discord.jpg", url: "" },
+  // { icon: "discord.jpg", url: "" },
 ];
 
 export const Footer = () => {
@@ -36,11 +37,16 @@ export const Footer = () => {
             <h3 className="text-2xl font-bold mb-6">QUICKLINK</h3>
             <ul className="space-y-3">
               {quickLinks.map((link) => (
-                <li key={link.label}>
-                  <a
-                    href={link.href}
-                    className="text-lg hover:text-[#fdb813] transition-colors"
-                  >
+                // <li key={link.label}>
+                //   <a
+                //     href={link.href}
+                //     className="text-lg hover:text-[#fdb813] transition-colors"
+                //   >
+                //     {link.label}
+                //   </a>
+                // </li>
+                 <li key={link.label}>
+                  <a className="text-lg hover:text-[#fdb813] transition-colors">
                     {link.label}
                   </a>
                 </li>

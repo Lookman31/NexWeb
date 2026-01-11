@@ -1,8 +1,9 @@
 // import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Home } from "./screens/Home";
-import { News } from "./screens/News";
-import { NewsDetail } from "./screens/News/NewsDetail";
+import { BusinessUnits } from "./screens/BusinessUnits";
+// import { News } from "./screens/News";
+// import { NewsDetail } from "./screens/News/NewsDetail";
 import { Video } from "./screens/Home/Services/Video/Video";
 import { Review } from "./screens/Home/Services/Review/Review";
 import { Photo } from "./screens/Home/Services/Photo/Photo";
@@ -17,8 +18,9 @@ function App() {
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/news" element={<News />} />
-        <Route path="/news/:id" element={<NewsDetail />} />       
+        <Route path="/businessunits" element={<BusinessUnits />} />
+        {/* <Route path="/news" element={<News />} /> */}
+        {/* <Route path="/news/:id" element={<NewsDetail />} />        */}
         <Route path="/services/video" element={<Video />} />
         <Route path="/services/review" element={<Review />} />
         <Route path="/services/photo" element={<Photo />} />

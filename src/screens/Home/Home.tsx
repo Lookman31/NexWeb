@@ -3,33 +3,58 @@ import { Footer } from "../../components/Footer";
 import { Link } from "react-router-dom";
 import { Services } from "./Services/Services";
 import { Portfolio } from "./Portfolio/Portfolio";
+import { useInView } from "react-intersection-observer";
 
 export const Home = (): JSX.Element => {
-  // ✅ สร้าง ref สำหรับ scroll
+ 
   const servicesRef = useRef<HTMLDivElement | null>(null);
   const portfolioRef = useRef<HTMLDivElement | null>(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const { ref: esportRef, inView: esportInView } = useInView({
+    triggerOnce: false,
+    threshold: 0.2,
+  });
+  const { ref: servicesSectionRef, inView: servicesInView } = useInView({
+    triggerOnce: false,
+    threshold: 0.2,
+  });
+  const { ref: portfolioSectionRef, inView: portfolioInView } = useInView({
+    triggerOnce: false,
+    threshold: 0.2,
+  });
+
+  const { ref: heroRef, inView: heroInView } = useInView({
+    triggerOnce: false,
+    threshold: 0.1,
+  });
+
+  const { ref: directorsRef, inView: directorsInView } = useInView({
+    triggerOnce: false, // เล่นแอนิเมชันครั้งเดียว
+    threshold: 0.2, // เริ่มเล่นเมื่อเห็น Section นี้แล้ว 20%
+  });
+
   // ✅ ฟังก์ชันเลื่อนไปยังแต่ละ Section
   const scrollToSection = (ref: React.RefObject<HTMLDivElement>) => {
     ref.current?.scrollIntoView({ behavior: "smooth" });
-    setIsMenuOpen(false); // ⬅️ ปิดเมนูหลังจากคลิก
+    setIsMenuOpen(false); 
   };
 
   // ✅ ฟังก์ชันเลื่อนไปด้านบนสุด
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
-    setIsMenuOpen(false); // ⬅️ ปิดเมนูหลังจากคลิก
+    setIsMenuOpen(false); 
   };
 
   const navigationItems = [
     { label: "HOME", href: "#" },
     { label: "SERVICES", href: "#" },
     { label: "PORTFOLIO", href: "#" },
-    { label: "NEWS", href: "#" },
+    // { label: "NEWS", href: "#" },
+    { label: "BUSINESS UNITS", href: "/businessunits" },
   ];
 
-  const [currentImageIndex, setCurrentImageIndex] = useState(0); // ⬅️ State สำหรับ index รูปภาพ
+  const [currentImageIndex, setCurrentImageIndex] = useState(0); 
 
   const backgroundImages = ["bg.jpg", "bg1.jpg", "bg2.jpg", "bg3.jpg"];
 
@@ -43,7 +68,7 @@ export const Home = (): JSX.Element => {
     }, 4000);
 
     return () => clearInterval(intervalId);
-  }, [backgroundImages.length]); // Dependency Array: ให้รันใหม่เมื่อจำนวนรูปภาพเปลี่ยน
+  }, [backgroundImages.length]); 
 
   return (
     <div className="bg-white min-h-screen w-full overflow-x-hidden scroll-smooth">
@@ -59,9 +84,9 @@ export const Home = (): JSX.Element => {
             {navigationItems.map((item) => (
               <a
                 key={item.label}
-                href={item.label === "NEWS" ? "/news" : item.href}
+                href={item.label === "BUSINESS UNITS" ? "/businessunits" : item.href}
                 onClick={(e) => {
-                  if (item.label !== "NEWS") {
+                  if (item.label !== "BUSINESS UNITS") {
                     e.preventDefault();
                     if (item.label === "HOME") scrollToTop();
                     if (item.label === "SERVICES") scrollToSection(servicesRef);
@@ -101,24 +126,24 @@ export const Home = (): JSX.Element => {
       {/* ✅ Mobile Menu Overlay  */}
       <div
         className={`fixed inset-0 z-40 lg:hidden transform transition-transform duration-300 ${
-          isMenuOpen ? "translate-x-0" : "translate-x-full" //  เลื่อนจากขวามา
+          isMenuOpen ? "translate-x-0" : "translate-x-full" 
         }`}
       >
-        {/* พื้นหลังมืด */}
+        
         <div
           className="absolute inset-0 bg-black/40 backdrop-blur-sm"
-          onClick={() => setIsMenuOpen(false)} //  คลิกที่พื้นหลังปิดเมนู
+          onClick={() => setIsMenuOpen(false)} 
         />
-        {/* เมนูหลัก */}
+        
         <nav className="absolute right-0 top-0 w-3/4 h-full bg-black flex flex-col pt-32 p-8 shadow-2xl space-y-6">
           {navigationItems.map((item) => {
-            // สำหรับ NEWS ใช้ Link
+            
             if (item.label === "NEWS") {
               return (
                 <Link
                   key={item.label}
                   to="/news"
-                  onClick={() => setIsMenuOpen(false)} // ปิดเมนูหลังเปลี่ยนหน้า
+                  onClick={() => setIsMenuOpen(false)} 
                   className="text-white text-3xl font-bold hover:text-[#fdb813] border-b border-gray-700 pb-3"
                 >
                   {item.label}
@@ -126,7 +151,7 @@ export const Home = (): JSX.Element => {
               );
             }
 
-            // สำหรับ HOME, SERVICES, PORTFOLIO ใช้ <a> และ Scroll
+            
             return (
               <a
                 key={item.label}
@@ -134,14 +159,12 @@ export const Home = (): JSX.Element => {
                 onClick={(e) => {
                   e.preventDefault();
 
-                  // เรียกใช้ฟังก์ชัน Scroll/Top
+                  
                   if (item.label === "HOME") scrollToTop();
                   else if (item.label === "SERVICES")
                     scrollToSection(servicesRef);
                   else if (item.label === "PORTFOLIO")
                     scrollToSection(portfolioRef);
-
-                  // (Note: setIsMenuOpen(false) ถูกเรียกภายใน scrollToTop/scrollToSection แล้ว)
                 }}
                 className="text-white text-3xl font-bold hover:text-[#fdb813] border-b border-gray-700 pb-3"
               >
@@ -164,10 +187,20 @@ export const Home = (): JSX.Element => {
 
         <div className="container mx-auto px-4 relative z-10">
           <div className="grid lg:grid-cols-2 gap-8 items-center">
-            <div className="space-y-6">
+            <div ref={heroRef} className="space-y-6">
               <div className="flex items-start space-x-4">
-                <div className="w-3 h-20 bg-[#fdb813] flex-shrink-0" />
-                <div>
+                <div
+                  className={`w-3 h-20 bg-[#fdb813] flex-shrink-0 transition-all duration-1000 
+          ${heroInView ? "scale-y-100 opacity-100" : "scale-y-0 opacity-0"}`}
+                />
+                <div
+                  className={`transition-all duration-1000 delay-300 
+          ${
+            heroInView
+              ? "opacity-100 translate-x-0"
+              : "opacity-0 -translate-x-10"
+          }`}
+                >
                   <h1 className="text-4xl lg:text-6xl font-bold text-white leading-tight">
                     WHY CHOOSE
                   </h1>
@@ -176,13 +209,23 @@ export const Home = (): JSX.Element => {
                   </h2>
                 </div>
               </div>
-              <p className="text-lg text-white leading-relaxed max-w-lg">
+              <p
+                className={`text-lg text-white leading-relaxed max-w-lg transition-all duration-1000 delay-700
+        ${
+          heroInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+        }`}
+              >
                 NEX Studio, we combine technology, creativity, and deep
                 understanding of gaming culture to deliver high-quality
                 productions that leave a lasting impact.
               </p>
             </div>
-            <div className="hidden lg:flex justify-center">
+            <div
+              className={`hidden lg:flex justify-center transition-all duration-1000 delay-700
+        ${
+          heroInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+        }`} 
+            >
               <img src="/baner.png" alt="Banner" className="h-45" />
             </div>
           </div>
@@ -190,70 +233,101 @@ export const Home = (): JSX.Element => {
       </section>
 
       {/* NEX ESPORT Section */}
-      <section className="py-16 md:py-24 bg-white">
+      <section className="py-16 md:py-24 bg-white" ref={esportRef}>
+        {" "}
+        
         <div className="container mx-auto px-4">
-          {/* จัดเรียงหัวข้อและปุ่มให้อยู่ในระดับเดียวกัน */}
+          
           <div className="flex items-center justify-between space-x-4 mb-16">
             <div className="flex items-center space-x-4">
-              <div className="w-3 h-16 bg-[#fdb813]" />
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#1e1e1e]">
+              <div
+                className={`w-3 h-16 bg-[#fdb813] transition-all duration-1000 
+                ${
+                  esportInView
+                    ? "scale-y-100 opacity-100"
+                    : "scale-y-0 opacity-0"
+                }`} 
+              />
+              <h2
+                className={`text-3xl md:text-4xl lg:text-5xl font-bold text-[#1e1e1e] transition-all duration-1000 delay-300
+                ${
+                  esportInView
+                    ? "opacity-100 translate-x-0"
+                    : "opacity-0 -translate-x-10"
+                }`}
+              >
+                {" "}
+                
                 NEX ESPORT
               </h2>
             </div>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-8">
-            <div className="w-full flex justify-center">
-              <img
-                className="w-[210px] h-[220px] object-cover rounded-lg"
-                alt="NEX Esport showcase"
-                src="game1.png"
-              />
-            </div>
+            {[
+              { src: "game1.png", delay: "200ms" },
+              { src: "game2.png", delay: "400ms" },
+              { src: "game3.png", delay: "600ms" },
+              { src: "game4.png", delay: "800ms" },
+              { src: "game5.png", delay: "1000ms" },
+            ].map((game, i) => (
+              <div
+                key={i}
+                className={`w-full flex justify-center transition-all duration-1000
+          ${
+            esportInView
+              ? "opacity-100 translate-y-0"
+              : "opacity-0 translate-y-20"
+          }`} 
+                style={{ transitionDelay: game.delay }}
+              >
+                <img
+                  className="w-[210px] h-[220px] object-cover rounded-lg shadow-lg hover:scale-110 transition-transform duration-500"
+                  alt={`NEX Esport showcase ${i + 1}`}
+                  src={game.src}
+                />
+              </div>
+            ))}
 
-            <div className="w-full flex justify-center">
-              <img
-                className="w-[210px] h-[220px] object-cover rounded-lg"
-                alt="NEX Esport showcase"
-                src="game2.png"
-              />
-            </div>
-
-            <div className="w-full flex justify-center">
-              <img
-                className="w-[210px] h-[220px] object-cover rounded-lg"
-                alt="NEX Esport showcase"
-                src="game3.png"
-              />
-            </div>
-
-            <div className="w-full flex justify-center">
-              <img
-                className="w-[210px] h-[220px] object-cover rounded-lg"
-                alt="NEX Esport showcase"
-                src="game4.png"
-              />
-            </div>
-
-            <div className="w-full flex justify-center">
-              <img
-                className="w-[210px] h-[220px] object-cover rounded-lg"
-                alt="NEX Esport showcase"
-                src="game5.png"
-              />
-            </div>
+            
           </div>
         </div>
       </section>
 
       {/* Board of Directors Section */}
-      <section className="py-16 md:py-24 bg-gradient-to-r from-gray-900 to-black text-white">
+      <section
+        ref={directorsRef} 
+        className="py-16 md:py-24 bg-gradient-to-r from-gray-900 to-black text-white"
+      >
         <div className="container mx-auto px-4  ">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-8">
+            
+            <div
+              className={`space-y-8 transition-all duration-1000 ease-out 
+              ${
+                directorsInView
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-20"
+              }`}
+            >
               <div className="flex items-start space-x-4">
-                <div className="w-3 h-16 bg-[#fdb813] flex-shrink-0" />
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight ">
+                <div
+                  className={`w-3 h-16 bg-[#fdb813] flex-shrink-0 transition-all duration-1000
+                  ${
+                    directorsInView
+                      ? "scale-y-100 opacity-100"
+                      : "scale-y-0 opacity-0"
+                  }`}
+                />
+                <h2
+                  className={`text-3xl md:text-4xl lg:text-5xl font-bold leading-tight transition-all duration-1000 delay-300
+                  ${
+                    directorsInView
+                      ? "opacity-100 translate-x-0"
+                      : "opacity-0 -translate-x-10"
+                  }`}
+                >
+                  {" "}
                   BOARD OF DIRECTORS
                 </h2>
               </div>
@@ -268,7 +342,13 @@ export const Home = (): JSX.Element => {
               </p>
             </div>
 
-            <div className="flex flex-col items-center space-y-8">
+            
+            <div
+              className={`flex flex-col items-center space-y-8 transition-all duration-1000 delay-300
+              ${
+                directorsInView ? "opacity-100 scale-100" : "opacity-0 scale-50"
+              }`}
+            >
               <div className="w-64 h-64 md:w-80 md:h-80 bg-gray-300 rounded-full flex items-center justify-center">
                 <img
                   src="ceo.jpg"
@@ -290,17 +370,69 @@ export const Home = (): JSX.Element => {
         </div>
       </section>
 
-      <Services ref={servicesRef} />
-      <Portfolio ref={portfolioRef} />
+      {/* ✅ SERVICES Section */}
+      <div ref={servicesSectionRef}>
+        {" "}
+        <div className="container mx-auto px-4 pt-16">
+          <div className="flex items-center space-x-4 ">
+            <div
+              className={`w-3 h-16 bg-[#fdb813] transition-all duration-1000 
+                    ${
+                      servicesInView
+                        ? "scale-y-100 opacity-100"
+                        : "scale-y-0 opacity-0"
+                    }`}
+            />{" "}
+            <h2
+              className={`text-3xl md:text-4xl lg:text-5xl font-bold text-[#1e1e1e] transition-all duration-1000 delay-300
+                    ${
+                      servicesInView
+                        ? "opacity-100 translate-x-0"
+                        : "opacity-0 -translate-x-10"
+                    }`}
+            >
+              SERVICES
+            </h2>{" "}
+          </div>
+        </div>
+        <Services ref={servicesRef} inView={servicesInView} />
+      </div>
+
+      {/* ✅ PORTFOLIO Section */}
+      <div ref={portfolioSectionRef}>
+        {" "}
+        
+        <div className="container mx-auto px-4 pt-16">
+          <div className="flex items-center space-x-4 ">
+            <div
+              className={`w-3 h-16 bg-[#fdb813] transition-all duration-1000 
+                    ${
+                      portfolioInView
+                        ? "scale-y-100 opacity-100"
+                        : "scale-y-0 opacity-0"
+                    }`}
+            />{" "}
+            <h2
+              className={`text-3xl md:text-4xl lg:text-5xl font-bold text-[#1e1e1e] transition-all duration-1000 delay-300
+                    ${
+                      portfolioInView
+                        ? "opacity-100 translate-x-0"
+                        : "opacity-0 -translate-x-10"
+                    }`}
+            >
+              PORTFOLIO
+            </h2>{" "}
+          </div>
+        </div>
+        <Portfolio ref={portfolioRef} inView={portfolioInView} />
+      </div>
 
       {/* Companies Section */}
       <section className="py-16 md:py-24 bg-white">
         <div className="container mx-auto px-4">
-          {/* ✅ Row 1 - 5 logos */}
-          {/* 🚨 เพิ่ม Class mb-8 เพื่อให้มีระยะห่างด้านล่าง */}
           <div className="flex justify-center gap-x-8 gap-y-4 mb-8 flex-wrap">
             {[
-              "gerena.jpg", //
+              "gerena.jpg",
               "nexon.png",
               "Asiasoft.jpg",
               "michelin.jpg",
