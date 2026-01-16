@@ -138,11 +138,11 @@ export const Home = (): JSX.Element => {
         <nav className="absolute right-0 top-0 w-3/4 h-full bg-black flex flex-col pt-32 p-8 shadow-2xl space-y-6">
           {navigationItems.map((item) => {
             
-            if (item.label === "NEWS") {
+            if (item.label === "BUSINESS UNITS") {
               return (
                 <Link
                   key={item.label}
-                  to="/news"
+                  to="/businessunits"
                   onClick={() => setIsMenuOpen(false)} 
                   className="text-white text-3xl font-bold hover:text-[#fdb813] border-b border-gray-700 pb-3"
                 >
