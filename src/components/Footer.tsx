@@ -4,7 +4,7 @@ const quickLinks = [
   { label: "Home"  },
   { label: "Service"  },
   { label: "Portfolio"  },
-  { label: "businessunits"  },
+  { label: "business units"  },
 ];
 
 const legalLinks = [
