@@ -6,7 +6,32 @@ import { Portfolio } from "./Portfolio/Portfolio";
 import { useInView } from "react-intersection-observer";
 
 export const Home = (): JSX.Element => {
- 
+
+  
+  const boardMembers = [
+    {
+      name: "Sakkaphol Sawarkkaphun",
+      position: "CEO NEX Studio",
+      image: "ceo.jpg",
+    },
+    {
+      name: "Mueanfan Khunoopakan",
+      position: "COO NEX Studio",
+      image: "coo.jpg",
+    },
+  ];
+
+  // ✅ [เพิ่ม] State สำหรับเก็บลำดับคนปัจจุบัน
+  const [currentBoardIndex, setCurrentBoardIndex] = useState(0);
+
+  // ✅ [เพิ่ม] useEffect สำหรับสั่งให้ลูปทุก 4 วินาที
+  useEffect(() => {
+    const boardInterval = setInterval(() => {
+      setCurrentBoardIndex((prev) => (prev + 1) % boardMembers.length);
+    }, 4000);
+    return () => clearInterval(boardInterval);
+  }, []);
+
   const servicesRef = useRef<HTMLDivElement | null>(null);
   const portfolioRef = useRef<HTMLDivElement | null>(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -37,13 +62,13 @@ export const Home = (): JSX.Element => {
   // ✅ ฟังก์ชันเลื่อนไปยังแต่ละ Section
   const scrollToSection = (ref: React.RefObject<HTMLDivElement>) => {
     ref.current?.scrollIntoView({ behavior: "smooth" });
-    setIsMenuOpen(false); 
+    setIsMenuOpen(false);
   };
 
   // ✅ ฟังก์ชันเลื่อนไปด้านบนสุด
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
-    setIsMenuOpen(false); 
+    setIsMenuOpen(false);
   };
 
   const navigationItems = [
@@ -54,7 +79,7 @@ export const Home = (): JSX.Element => {
     { label: "BUSINESS UNITS", href: "/businessunits" },
   ];
 
-  const [currentImageIndex, setCurrentImageIndex] = useState(0); 
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const backgroundImages = ["bg.jpg", "bg1.jpg", "bg2.jpg", "bg3.jpg"];
 
@@ -63,12 +88,12 @@ export const Home = (): JSX.Element => {
     const intervalId = setInterval(() => {
       // คำนวณ Index ถัดไป (วนกลับไป 0 เมื่อถึงรูปสุดท้าย)
       setCurrentImageIndex(
-        (prevIndex) => (prevIndex + 1) % backgroundImages.length
+        (prevIndex) => (prevIndex + 1) % backgroundImages.length,
       );
     }, 4000);
 
     return () => clearInterval(intervalId);
-  }, [backgroundImages.length]); 
+  }, [backgroundImages.length]);
 
   return (
     <div className="bg-white min-h-screen w-full overflow-x-hidden scroll-smooth">
@@ -84,7 +109,9 @@ export const Home = (): JSX.Element => {
             {navigationItems.map((item) => (
               <a
                 key={item.label}
-                href={item.label === "BUSINESS UNITS" ? "/businessunits" : item.href}
+                href={
+                  item.label === "BUSINESS UNITS" ? "/businessunits" : item.href
+                }
                 onClick={(e) => {
                   if (item.label !== "BUSINESS UNITS") {
                     e.preventDefault();
@@ -126,24 +153,22 @@ export const Home = (): JSX.Element => {
       {/* ✅ Mobile Menu Overlay  */}
       <div
         className={`fixed inset-0 z-40 lg:hidden transform transition-transform duration-300 ${
-          isMenuOpen ? "translate-x-0" : "translate-x-full" 
+          isMenuOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
-        
         <div
           className="absolute inset-0 bg-black/40 backdrop-blur-sm"
-          onClick={() => setIsMenuOpen(false)} 
+          onClick={() => setIsMenuOpen(false)}
         />
-        
+
         <nav className="absolute right-0 top-0 w-3/4 h-full bg-black flex flex-col pt-32 p-8 shadow-2xl space-y-6">
           {navigationItems.map((item) => {
-            
             if (item.label === "BUSINESS UNITS") {
               return (
                 <Link
                   key={item.label}
                   to="/businessunits"
-                  onClick={() => setIsMenuOpen(false)} 
+                  onClick={() => setIsMenuOpen(false)}
                   className="text-white text-3xl font-bold hover:text-[#fdb813] border-b border-gray-700 pb-3"
                 >
                   {item.label}
@@ -151,7 +176,6 @@ export const Home = (): JSX.Element => {
               );
             }
 
-            
             return (
               <a
                 key={item.label}
@@ -159,7 +183,6 @@ export const Home = (): JSX.Element => {
                 onClick={(e) => {
                   e.preventDefault();
 
-                  
                   if (item.label === "HOME") scrollToTop();
                   else if (item.label === "SERVICES")
                     scrollToSection(servicesRef);
@@ -224,7 +247,7 @@ export const Home = (): JSX.Element => {
               className={`hidden lg:flex justify-center transition-all duration-1000 delay-700
         ${
           heroInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-        }`} 
+        }`}
             >
               <img src="/baner.png" alt="Banner" className="h-45" />
             </div>
@@ -235,9 +258,7 @@ export const Home = (): JSX.Element => {
       {/* NEX ESPORT Section */}
       <section className="py-16 md:py-24 bg-white" ref={esportRef}>
         {" "}
-        
         <div className="container mx-auto px-4">
-          
           <div className="flex items-center justify-between space-x-4 mb-16">
             <div className="flex items-center space-x-4">
               <div
@@ -246,7 +267,7 @@ export const Home = (): JSX.Element => {
                   esportInView
                     ? "scale-y-100 opacity-100"
                     : "scale-y-0 opacity-0"
-                }`} 
+                }`}
               />
               <h2
                 className={`text-3xl md:text-4xl lg:text-5xl font-bold text-[#1e1e1e] transition-all duration-1000 delay-300
@@ -257,7 +278,6 @@ export const Home = (): JSX.Element => {
                 }`}
               >
                 {" "}
-                
                 NEX ESPORT
               </h2>
             </div>
@@ -278,7 +298,7 @@ export const Home = (): JSX.Element => {
             esportInView
               ? "opacity-100 translate-y-0"
               : "opacity-0 translate-y-20"
-          }`} 
+          }`}
                 style={{ transitionDelay: game.delay }}
               >
                 <img
@@ -288,20 +308,17 @@ export const Home = (): JSX.Element => {
                 />
               </div>
             ))}
-
-            
           </div>
         </div>
       </section>
 
       {/* Board of Directors Section */}
       <section
-        ref={directorsRef} 
+        ref={directorsRef}
         className="py-16 md:py-24 bg-gradient-to-r from-gray-900 to-black text-white"
       >
         <div className="container mx-auto px-4  ">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            
             <div
               className={`space-y-8 transition-all duration-1000 ease-out 
               ${
@@ -342,29 +359,37 @@ export const Home = (): JSX.Element => {
               </p>
             </div>
 
-            
+            {/* 🛠️ [แก้ไขใหม่ทั้งหมด] ส่วนของรูปภาพบอร์ดบริหารเพื่อให้ลูปได้ */}
             <div
-              className={`flex flex-col items-center space-y-8 transition-all duration-1000 delay-300
-              ${
-                directorsInView ? "opacity-100 scale-100" : "opacity-0 scale-50"
-              }`}
+              className={`relative flex flex-col items-center justify-center transition-all duration-1000 delay-300 h-[450px]
+              ${directorsInView ? "opacity-100 scale-100" : "opacity-0 scale-50"}`}
             >
-              <div className="w-64 h-64 md:w-80 md:h-80 bg-gray-300 rounded-full flex items-center justify-center">
-                <img
-                  src="ceo.jpg"
-                  alt="CEO Profile"
-                  className="w-full h-full object-cover rounded-full"
-                />
-              </div>
+              {boardMembers.map((member, index) => (
+                <div
+                  key={index}
+                  className={`absolute inset-0 flex flex-col items-center justify-center transition-all duration-1000 ease-in-out
+                  ${currentBoardIndex === index ? "opacity-100 z-10" : "opacity-0 z-0"}`}
+                >
+                  {/* รูปภาพ */}
+                  <div className="w-64 h-64 md:w-80 md:h-80 rounded-full flex items-center justify-center overflow-hidden">
+                    <img
+                      src={member.image}
+                      alt={member.name}
+                      className="w-full h-full object-cover rounded-full"
+                    />
+                  </div>
 
-              <div className="text-center">
-                <h3 className="text-xl md:text-2xl lg:text-3xl font-semibold mb-2">
-                  Sakkaphol Sawarkkaphun
-                </h3>
-                <p className="text-base md:text-lg text-gray-300">
-                  CEO NEX Studio
-                </p>
-              </div>
+                  {/* ชื่อและตำแหน่ง */}
+                  <div className="text-center mt-8">
+                    <h3 className="text-xl md:text-2xl lg:text-3xl font-semibold mb-2">
+                      {member.name}
+                    </h3>
+                    <p className="text-base md:text-lg text-gray-300">
+                      {member.position}
+                    </p>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -401,7 +426,6 @@ export const Home = (): JSX.Element => {
       {/* ✅ PORTFOLIO Section */}
       <div ref={portfolioSectionRef}>
         {" "}
-        
         <div className="container mx-auto px-4 pt-16">
           <div className="flex items-center space-x-4 ">
             <div
