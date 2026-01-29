@@ -9,6 +9,7 @@ import { Review } from "./screens/Home/Services/Review/Review";
 import { Photo } from "./screens/Home/Services/Photo/Photo";
 import { Tournament } from "./screens/Home/Services/Tournament/Tournament";
 import { Livestream } from "./screens/Home/Services/Livestream/Livestream";
+import { Nexcsgo } from "./screens/Home/Portfolio/Nex-cs-go/Nexcsgo";
 import { ScrollToTop } from "./components/Scrolltotop"; 
 
 
@@ -26,6 +27,7 @@ function App() {
         <Route path="/services/photo" element={<Photo />} />
         <Route path="/services/tournament" element={<Tournament />} />
         <Route path="/services/steam" element={<Livestream />} />
+        <Route path="/portfolio/nex-cs-go" element={<Nexcsgo />} />
       </Routes>
     </Router>
   );

@@ -9,7 +9,11 @@ const serviceCards = [
     image: "video.jpg",
     urlPath: "/services/video",
   },
-  { id: 2, title: "Review", image: "review.jpg", urlPath: "/services/review" },
+  { id: 2, 
+    title: "Review", 
+    image: "review.jpg", 
+    urlPath: "/services/review" 
+  },
   {
     id: 3,
     title: "Photographer",
@@ -43,14 +47,14 @@ export const Services = React.forwardRef<HTMLDivElement, ServicesProps>(
             {serviceCards.map((service, i) => (
               <RouterLink
                 key={service.title}
-                to={service.urlPath} 
+                to={service.urlPath}
                 className={`relative overflow-hidden border-0 rounded-lg group cursor-pointer transition-all duration-1000 
                 ${
                   inView
                     ? "opacity-100 translate-y-0"
                     : "opacity-0 translate-y-10"
                 }`}
-                style={{ transitionDelay: `${(i + 1) * 200}ms` }} 
+                style={{ transitionDelay: `${(i + 1) * 200}ms` }}
               >
                 <Card className="border-0 p-0 transition-transform hover:scale-105">
                   <CardContent className="p-0 h-64 md:h-80 relative">
@@ -73,5 +77,5 @@ export const Services = React.forwardRef<HTMLDivElement, ServicesProps>(
         </div>
       </section>
     );
-  }
+  },
 );

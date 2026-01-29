@@ -22,7 +22,7 @@ Live content requires precision — and that's exactly what we deliver`,
     "/Livestream/livestream1.jpg", 
     "/Livestream/livestream2.jpg", 
     "/Livestream/livestream3.jpg",
-    "/Livestream/livestream4.jpg",
+    "/Livestream/livestream5.jpg",
   ],
 };
 
