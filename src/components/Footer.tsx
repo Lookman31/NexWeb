@@ -4,7 +4,7 @@ const quickLinks = [
   { label: "Home"  },
   { label: "Service"  },
   { label: "Portfolio"  },
-  { label: "business units"  },
+  { label: "Business units"  },
 ];
 
 const legalLinks = [
@@ -71,9 +71,9 @@ export const Footer = () => {
               {socialMedia.map((item, i) => (
                 <a
                   key={i}
-                  href={item.url} // ⬅️ กำหนด URL ปลายทาง
-                  target="_blank" // ⬅️ เปิดในแท็บใหม่ (Best Practice)
-                  rel="noopener noreferrer" // ⬅️ ป้องกันความปลอดภัย (สำคัญ)
+                  href={item.url} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
                   className="w-9 h-9 flex items-center justify-center bg-gray-600 rounded hover:bg-[#fdb813] transition-colors cursor-pointer"
                 >
                   <img

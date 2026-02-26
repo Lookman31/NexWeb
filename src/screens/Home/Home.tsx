@@ -6,8 +6,6 @@ import { Portfolio } from "./Portfolio/Portfolio";
 import { useInView } from "react-intersection-observer";
 
 export const Home = (): JSX.Element => {
-
-  
   const boardMembers = [
     {
       name: "Sakkaphol Sawarkkaphun",
@@ -21,10 +19,10 @@ export const Home = (): JSX.Element => {
     },
   ];
 
-  // ✅ [เพิ่ม] State สำหรับเก็บลำดับคนปัจจุบัน
+  // ] State สำหรับเก็บลำดับคนปัจจุบัน
   const [currentBoardIndex, setCurrentBoardIndex] = useState(0);
 
-  // ✅ [เพิ่ม] useEffect สำหรับสั่งให้ลูปทุก 4 วินาที
+  //  useEffect สำหรับสั่งให้ลูปทุก 4 วินาที
   useEffect(() => {
     const boardInterval = setInterval(() => {
       setCurrentBoardIndex((prev) => (prev + 1) % boardMembers.length);
@@ -59,13 +57,13 @@ export const Home = (): JSX.Element => {
     threshold: 0.2, // เริ่มเล่นเมื่อเห็น Section นี้แล้ว 20%
   });
 
-  // ✅ ฟังก์ชันเลื่อนไปยังแต่ละ Section
+  //  ฟังก์ชันเลื่อนไปยังแต่ละ Section
   const scrollToSection = (ref: React.RefObject<HTMLDivElement>) => {
     ref.current?.scrollIntoView({ behavior: "smooth" });
     setIsMenuOpen(false);
   };
 
-  // ✅ ฟังก์ชันเลื่อนไปด้านบนสุด
+  //  ฟังก์ชันเลื่อนไปด้านบนสุด
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
     setIsMenuOpen(false);
@@ -80,10 +78,9 @@ export const Home = (): JSX.Element => {
   ];
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
   const backgroundImages = ["bg.jpg", "bg1.jpg", "bg2.jpg", "bg3.jpg"];
 
-  // ⬅️  สำหรับ Auto-Scroll
+  //   สำหรับ Auto-Scroll
   useEffect(() => {
     const intervalId = setInterval(() => {
       // คำนวณ Index ถัดไป (วนกลับไป 0 เมื่อถึงรูปสุดท้าย)
@@ -395,6 +392,8 @@ export const Home = (): JSX.Element => {
         </div>
       </section>
 
+      
+
       {/* ✅ SERVICES Section */}
       <div ref={servicesSectionRef}>
         {" "}
@@ -450,6 +449,34 @@ export const Home = (): JSX.Element => {
         </div>
         <Portfolio ref={portfolioRef} inView={portfolioInView} />
       </div>
+
+          {/* Contact Button */}
+          <Link
+            to="/ContactUs"
+            className="fixed bottom-8 right-8 z-[60] bg-[#fdb813] p-4 rounded-full shadow-2xl hover:scale-110 transition-all duration-300 group active:scale-95"
+            title="Contact Us"
+          >
+            
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="w-8 h-8 text-black"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"
+              />
+            </svg>
+
+            
+            <span className="absolute right-full mr-4 top-1/2 -translate-y-1/2 bg-black text-white text-sm py-2 px-4 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap hidden md:block pointer-events-none shadow-xl">
+              Contact Us
+            </span>
+          </Link>
 
       {/* Companies Section */}
       <section className="py-16 md:py-24 bg-white">

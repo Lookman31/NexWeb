@@ -10,5 +10,5 @@ export const ScrollToTop = () => {
     window.scrollTo(0, 0);
   }, [pathname]); // Hook จะทำงานซ้ำทุกครั้งที่ URL Path เปลี่ยน
 
-  return null; // Component นี้ไม่แสดงผลอะไรใน UI
+  return null; 
 };

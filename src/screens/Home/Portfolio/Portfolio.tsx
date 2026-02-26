@@ -97,15 +97,15 @@
 //   },
 // );
 import React from "react";
-import { Link } from "react-router-dom"; // ✅ [เพิ่ม]
+import { Link } from "react-router-dom"; 
 
-// ✅ [เพิ่ม] สร้างข้อมูลแบบเดียวกับหน้า Services
+
 const portfolioItems = [
   {
     id: 1,
-    title: "Garena World 2024",
+    title: "Ichitan",
     image: "port1.jpg",
-    urlPath: "/portfolio/garena-world",
+    urlPath: "/portfolio/Ichitan",
     delay: "200ms",
     className: "h-48 md:h-64" // เก็บขนาดเดิมไว้
   },
@@ -149,7 +149,7 @@ export const Portfolio = React.forwardRef<HTMLDivElement, { inView?: boolean }>(
       <section ref={ref} className="pb-16 md:py-24 ">
         <div className="container mx-auto px-4">
           
-          {/* ส่วนนี้คุณสามารถใช้ .map() เพื่อวนลูปแสดงผลได้เลยเหมือนหน้า Services */}
+          
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {portfolioItems.slice(0, 4).map((item) => (
               <Link
@@ -168,7 +168,7 @@ export const Portfolio = React.forwardRef<HTMLDivElement, { inView?: boolean }>(
             ))}
           </div>
 
-          {/* อันสุดท้ายที่เป็นอันใหญ่ (port6) */}
+          
           <Link to="/portfolio/nex-cs-go" 
             className={`mt-6 w-full h-[300px] md:h-[700px] block rounded-lg overflow-hidden transition-all duration-1000 ease-out group
             ${inView ? "opacity-100 scale-100 translate-y-0" : "opacity-0 scale-95 translate-y-10"}`}

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Footer } from "../../../../components/Footer";
 
-export const Nexcsgo = () => {
+export const Ichitan = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
 
@@ -12,8 +12,8 @@ export const Nexcsgo = () => {
 
   // ข้อมูลรูปภาพสำหรับ Gallery
   const galleryImages = [
-    { id: 1, src: "/port6.jpg" }, // รูปหลัก
-    { id: 2, src: "/port1.jpg" },
+    { id: 1, src: "/port1.jpg" }, // รูปหลัก
+    { id: 2, src: "/port6.jpg" },
     { id: 3, src: "/port3.png" },
     { id: 4, src: "/port4.jpg" },
   ];
@@ -97,9 +97,9 @@ export const Nexcsgo = () => {
           </div>
         </div>
 
-        {/*  Image Gallery Section */}
+        {/* 🟢 Image Gallery Section */}
         <div className="relative flex items-center mb-16 px-16">
-          {" "}
+          {" "}        
           <button
             onClick={prevSlide}
             className="absolute left-0 z-10 w-12 h-12 flex items-center justify-center bg-gray-100 rounded-full hover:bg-[#fdb813] hover:text-white transition-all shadow-md active:scale-90 text-3xl font-light"
@@ -122,6 +122,7 @@ export const Nexcsgo = () => {
               </div>
             ))}
           </div>
+          
           <button
             onClick={nextSlide}
             className="absolute right-0 z-10 w-12 h-12 flex items-center justify-center bg-gray-100 rounded-full hover:bg-[#fdb813] hover:text-white transition-all shadow-md active:scale-90 text-3xl font-light"
@@ -130,7 +131,7 @@ export const Nexcsgo = () => {
           </button>
         </div>
 
-        {/*  Content Section */}
+        {/* ✅ Content Section */}
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-2xl md:text-3xl font-bold mb-8 leading-tight">
             Blue Archive เปิดให้โหลดเวอร์ชั่น PC <br /> ได้แล้วบน steam
