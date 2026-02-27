@@ -10,8 +10,11 @@ import { Review } from "./screens/Home/Services/Review/Review";
 import { Photo } from "./screens/Home/Services/Photo/Photo";
 import { Tournament } from "./screens/Home/Services/Tournament/Tournament";
 import { Livestream } from "./screens/Home/Services/Livestream/Livestream";
-import { Nexcsgo } from "./screens/Home/Portfolio/Nex-cs-go/Nexcsgo";
-import { Ichitan } from "./screens/Home/Portfolio/Ichitan/Ichitan";
+import { Group5 } from "./screens/Home/Portfolio/group5/group5";
+import { Group1 } from "./screens/Home/Portfolio/group1/group1";
+import { Group2 } from "./screens/Home/Portfolio/group2/group2";
+import { Group3 } from "./screens/Home/Portfolio/group3/group3";
+import { Group4 } from "./screens/Home/Portfolio/group4/group4";
 import { ScrollToTop } from "./components/Scrolltotop"; 
 
 
@@ -30,8 +33,11 @@ function App() {
         <Route path="/services/photo" element={<Photo />} />
         <Route path="/services/tournament" element={<Tournament />} />
         <Route path="/services/steam" element={<Livestream />} />
-        <Route path="/portfolio/nex-cs-go" element={<Nexcsgo />} />
-        <Route path="/portfolio/Ichitan" element={<Ichitan />} />
+        <Route path="/portfolio/group5" element={<Group5 />} />
+        <Route path="/portfolio/group1" element={<Group1 />} />
+        <Route path="/portfolio/group2" element={<Group2 />} />
+        <Route path="/portfolio/group3" element={<Group3 />} />
+        <Route path="/portfolio/group4" element={<Group4 />} />
       </Routes>
     </Router>
   );

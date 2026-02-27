@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Footer } from "../../../../components/Footer";
 
-export const Nexcsgo = () => {
+export const Group4 = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
 
@@ -12,10 +12,10 @@ export const Nexcsgo = () => {
 
   // ข้อมูลรูปภาพสำหรับ Gallery
   const galleryImages = [
-    { id: 1, src: "/port6.jpg" }, // รูปหลัก
-    { id: 2, src: "/port1.jpg" },
-    { id: 3, src: "/port3.png" },
-    { id: 4, src: "/port4.jpg" },
+    { id: 1, src: "/port-group4/main.jpg" }, // รูปหลัก
+    { id: 2, src: "/port-group4/1.jpg" },
+    { id: 3, src: "/port-group4/2.jpg" },
+    { id: 4, src: "/port-group4/3.jpg" },
   ];
 
   const nextSlide = () => {
@@ -71,7 +71,7 @@ export const Nexcsgo = () => {
       )}
 
       <div className="container mx-auto px-4 pt-32 pb-20">
-        {/*  Breadcrumbs: Home > Portfolio */}
+        {/*  Breadcrumbs:  */}
         <nav className="text-sm mb-12 flex items-center space-x-2">
           <Link to="/" className="hover:text-[#fdb813] transition-colors">
             Home
@@ -97,7 +97,7 @@ export const Nexcsgo = () => {
           </div>
         </div>
 
-        {/*  Image Gallery Section */}
+        {/* 🟢 Image Gallery Section */}
         <div className="relative flex items-center mb-16 px-16">
           {" "}
           <button
@@ -130,42 +130,28 @@ export const Nexcsgo = () => {
           </button>
         </div>
 
-        {/*  Content Section */}
+        {/* ✅ Content Section */}
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-2xl md:text-3xl font-bold mb-8 leading-tight">
-            Blue Archive เปิดให้โหลดเวอร์ชั่น PC <br /> ได้แล้วบน steam
+            Advanced 4K Live Broadcasting Studio
           </h1>
 
           <div className="w-full h-[1px] bg-gray-300 mb-8"></div>
 
           <div className="text-left space-y-4 text-sm md:text-base text-gray-800 leading-relaxed">
-            <p>เป็นเกมแนว RPG ผสม Tactical Strategy</p>
+            <p>State-of-the-art studio supporting up to 4K 60fps recording and streaming</p>
             <p>
-              รูปแบบการเล่นของเกม
+              Professional live hosts and MCs available to engage your audience
               <br />
-              โดยผู้เล่นรับบทเป็น "Sensei" คอยดูแลและนำทีมเหล่านักเรียนหญิง
+              On-site technical staff and assistants for seamless event coordination
               <br />
-              มีระบบต่อสู้แบบวางแผน 6 ตัว แบ่งเป็น Striker และ Special
+              Expert switcher teams and professional camera operators at your service
               <br />
-              ตัวละครแต่ละคนมีสกิล ความสามารถ และบทบาทเฉพาะตัว
+              High-performance production gear for a flawless broadcasting experience
               <br />
-              เกมมีระบบ Gacha สำหรับสะสมตัวละครระดับต่างๆ
-              <br />
-              มีระบบอัปเกรดตัวละคร อุปกรณ์ และสร้างความสัมพันธ์กับนักเรียน
             </p>
 
-            <p>
-              ตัวเกมมีเนื้อเรื่องที่เข้มข้น ผสมทั้งดราม่า แอ็คชั่น และมุกตลก
-              กราฟิกสไตล์อนิเมะ ตัวละครน่ารักและออกแบบมาอย่างละเอียด
-              <br />
-              เพลงประกอบคุณภาพสูง ช่วยเสริมบรรยากาศในเกม
-            </p>
-
-            <p>
-              สำหรับใครที่ชอบเกมแนวอนิเมะ วางแผน และเนื้อเรื่องลึกๆ
-              สามารถไปโหลดมาเล่นได้ทั้ง mobile (google play & app store), PC
-              (steam)
-            </p>
+            <p>Elevate your content quality with our all-in-one professional studio team.</p>
           </div>
         </div>
       </div>

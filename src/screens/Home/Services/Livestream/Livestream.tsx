@@ -17,7 +17,7 @@ Whether it's a corporate announcement, webinar, online concert, or esports event
 
 Live content requires precision — and that's exactly what we deliver`,
 
-  image: "/port1.jpg",
+  image: "/steam.jpg",
   gallery: [
     "/Livestream/livestream1.jpg", 
     "/Livestream/livestream2.jpg", 
@@ -55,7 +55,7 @@ const [currentSlide, setCurrentSlide] = useState(0);
           style={{
             backgroundImage: `url(${livesteramDetailData.image})`,
             
-            backgroundPosition: "center 50%", 
+            backgroundPosition: "center 25%", 
           }}
         />
         
