@@ -10,12 +10,11 @@ export const Group5 = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  // ข้อมูลรูปภาพสำหรับ Gallery
   const galleryImages = [
-    { id: 1, src: "/port-group5/main.jpg" }, // รูปหลัก
-    { id: 2, src: "/port-group5/1.jpg" },
-    { id: 3, src: "/port-group5/2.jpg" },
-    { id: 4, src: "/port-group5/3.jpg" },
+    { id: 1, src: "/port-group5/main.jpg", position: "object-center" },
+    { id: 2, src: "/port-group5/1.jpg", position: "object-[center_10%]" },
+    { id: 3, src: "/port-group5/2.jpg", position: "object-[center_20%]" },
+    { id: 4, src: "/port-group5/3.jpg", position: "object-[center_10%]" },
   ];
 
   const nextSlide = () => {
@@ -87,7 +86,7 @@ export const Group5 = () => {
           <img
             src={galleryImages[currentIndex].src}
             alt="Main Portfolio"
-            className="w-full h-full object-cover transition-all duration-500 group-hover:scale-105"
+            className={`w-full h-full object-cover ${galleryImages[currentIndex].position}`}
           />
 
           <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-all flex items-center justify-center">
@@ -116,8 +115,8 @@ export const Group5 = () => {
               >
                 <img
                   src={img.src}
-                  className="w-full h-full object-cover"
                   alt="thumbnail"
+                  className={`w-full h-full object-cover ${img.position}`}
                 />
               </div>
             ))}
@@ -139,18 +138,26 @@ export const Group5 = () => {
           <div className="w-full h-[1px] bg-gray-300 mb-8"></div>
 
           <div className="text-left space-y-4 text-sm md:text-base text-gray-800 leading-relaxed">
-            <p>Professional product photography and brand advertising for promotions</p>
             <p>
-              
-              Customized content creation to enhance your brand's unique identity
+              Professional product photography and brand advertising for
+              promotions
+            </p>
+            <p>
+              Customized content creation to enhance your brand's unique
+              identity
               <br />
-              Influencer sourcing services to match your specific brand personality
+              Influencer sourcing services to match your specific brand
+              personality
               <br />
-              Extensive creator network to ensure alignment with your brand image
+              Extensive creator network to ensure alignment with your brand
+              image
               <br />
             </p>
 
-            <p>CStrategic marketing support to reach and engage your target audience.</p>
+            <p>
+              CStrategic marketing support to reach and engage your target
+              audience.
+            </p>
           </div>
         </div>
       </div>

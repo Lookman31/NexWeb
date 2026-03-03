@@ -19,7 +19,7 @@ export const Home = (): JSX.Element => {
     },
   ];
 
-  // ] State สำหรับเก็บลำดับคนปัจจุบัน
+  
   const [currentBoardIndex, setCurrentBoardIndex] = useState(0);
 
   //  useEffect สำหรับสั่งให้ลูปทุก 4 วินาที
@@ -356,7 +356,7 @@ export const Home = (): JSX.Element => {
               </p>
             </div>
 
-            {/* 🛠️ [แก้ไขใหม่ทั้งหมด] ส่วนของรูปภาพบอร์ดบริหารเพื่อให้ลูปได้ */}
+            
             <div
               className={`relative flex flex-col items-center justify-center transition-all duration-1000 delay-300 h-[450px]
               ${directorsInView ? "opacity-100 scale-100" : "opacity-0 scale-50"}`}
@@ -367,7 +367,7 @@ export const Home = (): JSX.Element => {
                   className={`absolute inset-0 flex flex-col items-center justify-center transition-all duration-1000 ease-in-out
                   ${currentBoardIndex === index ? "opacity-100 z-10" : "opacity-0 z-0"}`}
                 >
-                  {/* รูปภาพ */}
+                  
                   <div className="w-64 h-64 md:w-80 md:h-80 rounded-full flex items-center justify-center overflow-hidden">
                     <img
                       src={member.image}
@@ -376,7 +376,7 @@ export const Home = (): JSX.Element => {
                     />
                   </div>
 
-                  {/* ชื่อและตำแหน่ง */}
+                  
                   <div className="text-center mt-8">
                     <h3 className="text-xl md:text-2xl lg:text-3xl font-semibold mb-2">
                       {member.name}
