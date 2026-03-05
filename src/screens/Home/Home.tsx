@@ -6,6 +6,7 @@ import { Portfolio } from "./Portfolio/Portfolio";
 import { useInView } from "react-intersection-observer";
 
 export const Home = (): JSX.Element => {
+
   const boardMembers = [
     {
       name: "Sakkaphol Sawarkkaphun",
@@ -31,6 +32,7 @@ export const Home = (): JSX.Element => {
 
   const servicesRef = useRef<HTMLDivElement | null>(null);
   const portfolioRef = useRef<HTMLDivElement | null>(null);
+  
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const { ref: esportRef, inView: esportInView } = useInView({
@@ -79,10 +81,8 @@ export const Home = (): JSX.Element => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const backgroundImages = ["bg.jpg", "bg1.jpg", "bg2.jpg", "bg3.jpg"];
 
-  //   สำหรับ Auto-Scroll
   useEffect(() => {
     const intervalId = setInterval(() => {
-      // คำนวณ Index ถัดไป (วนกลับไป 0 เมื่อถึงรูปสุดท้าย)
       setCurrentImageIndex(
         (prevIndex) => (prevIndex + 1) % backgroundImages.length,
       );
@@ -146,7 +146,7 @@ export const Home = (): JSX.Element => {
         </nav>
       </header>
 
-      {/* ✅ Mobile Menu Overlay  */}
+      {/*  Mobile Menu Overlay  */}
       <div
         className={`fixed inset-0 z-40 lg:hidden transform transition-transform duration-300 ${
           isMenuOpen ? "translate-x-0" : "translate-x-full"
