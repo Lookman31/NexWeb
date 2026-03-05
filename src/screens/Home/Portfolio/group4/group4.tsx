@@ -133,25 +133,25 @@ export const Group4 = () => {
         {/* ✅ Content Section */}
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-2xl md:text-3xl font-bold mb-8 leading-tight">
-            Advanced 4K Live Broadcasting Studio
+            Seminar Speaker <br /> Production, Esports & IT Solutions
           </h1>
 
           <div className="w-full h-[1px] bg-gray-300 mb-8"></div>
 
           <div className="text-left space-y-4 text-sm md:text-base text-gray-800 leading-relaxed">
-            <p>State-of-the-art studio supporting up to 4K 60fps recording and streaming</p>
+            <p>Professional seminar speaker specializing in Production Technology, Esports, and IT Solutions</p>
             <p>
-              Professional live hosts and MCs available to engage your audience
+              Focused on empowering organizations, institutions, and communities through modern digital ecosystems
               <br />
-              On-site technical staff and assistants for seamless event coordination
+              Comprehensive insights into production technology and live broadcasting systems
               <br />
-              Expert switcher teams and professional camera operators at your service
+              In-depth understanding of esports industry structure and tournament management
               <br />
-              High-performance production gear for a flawless broadcasting experience
+              Strategic IT solutions for digital transformation and scalable infrastructure
               <br />
             </p>
 
-            <p>Elevate your content quality with our all-in-one professional studio team.</p>
+            <p>Empower your audience with future-ready technology expertise.</p>
           </div>
         </div>
       </div>

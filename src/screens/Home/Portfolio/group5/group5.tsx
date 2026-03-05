@@ -12,8 +12,8 @@ export const Group5 = () => {
 
   const galleryImages = [
     { id: 1, src: "/port-group5/main.jpg", position: "object-center" },
-    { id: 2, src: "/port-group5/1.jpg", position: "object-[center_10%]" },
-    { id: 3, src: "/port-group5/2.jpg", position: "object-[center_20%]" },
+    { id: 2, src: "/port-group5/1.jpg", position: "object-[center_55%]" },
+    { id: 3, src: "/port-group5/2.jpg", position: "object-[center_25%]" },
     { id: 4, src: "/port-group5/3.jpg", position: "object-[center_10%]" },
   ];
 

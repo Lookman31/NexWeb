@@ -19,7 +19,6 @@ export const Home = (): JSX.Element => {
     },
   ];
 
-  
   const [currentBoardIndex, setCurrentBoardIndex] = useState(0);
 
   //  useEffect สำหรับสั่งให้ลูปทุก 4 วินาที
@@ -206,7 +205,7 @@ export const Home = (): JSX.Element => {
         <div className="absolute inset-0 bg-black/60" />
 
         <div className="container mx-auto px-4 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-8 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             <div ref={heroRef} className="space-y-6">
               <div className="flex items-start space-x-4">
                 <div
@@ -241,12 +240,14 @@ export const Home = (): JSX.Element => {
               </p>
             </div>
             <div
-              className={`hidden lg:flex justify-center transition-all duration-1000 delay-700
-        ${
-          heroInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-        }`}
+              className={`flex justify-center mt-8 lg:mt-0 transition-all duration-1000 delay-700
+    ${heroInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
             >
-              <img src="/baner.png" alt="Banner" className="h-45" />
+              <img
+                src="/baner.png"
+                alt="Banner"
+                className="w-4/5 max-w-md lg:max-w-lg xl:max-w-xl"
+              />
             </div>
           </div>
         </div>
@@ -356,7 +357,6 @@ export const Home = (): JSX.Element => {
               </p>
             </div>
 
-            
             <div
               className={`relative flex flex-col items-center justify-center transition-all duration-1000 delay-300 h-[450px]
               ${directorsInView ? "opacity-100 scale-100" : "opacity-0 scale-50"}`}
@@ -367,7 +367,6 @@ export const Home = (): JSX.Element => {
                   className={`absolute inset-0 flex flex-col items-center justify-center transition-all duration-1000 ease-in-out
                   ${currentBoardIndex === index ? "opacity-100 z-10" : "opacity-0 z-0"}`}
                 >
-                  
                   <div className="w-64 h-64 md:w-80 md:h-80 rounded-full flex items-center justify-center overflow-hidden">
                     <img
                       src={member.image}
@@ -376,7 +375,6 @@ export const Home = (): JSX.Element => {
                     />
                   </div>
 
-                  
                   <div className="text-center mt-8">
                     <h3 className="text-xl md:text-2xl lg:text-3xl font-semibold mb-2">
                       {member.name}
@@ -391,8 +389,6 @@ export const Home = (): JSX.Element => {
           </div>
         </div>
       </section>
-
-      
 
       {/* ✅ SERVICES Section */}
       <div ref={servicesSectionRef}>
@@ -450,33 +446,31 @@ export const Home = (): JSX.Element => {
         <Portfolio ref={portfolioRef} inView={portfolioInView} />
       </div>
 
-          {/* Contact Button */}
-          <Link
-            to="/ContactUs"
-            className="fixed bottom-8 right-8 z-[60] bg-[#fdb813] p-4 rounded-full shadow-2xl hover:scale-110 transition-all duration-300 group active:scale-95"
-            title="Contact Us"
-          >
-            
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="w-8 h-8 text-black"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"
-              />
-            </svg>
+      {/* Contact Button */}
+      <Link
+        to="/ContactUs"
+        className="fixed bottom-8 right-8 z-[60] bg-[#fdb813] p-4 rounded-full shadow-2xl hover:scale-110 transition-all duration-300 group active:scale-95"
+        title="Contact Us"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="w-8 h-8 text-black"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"
+          />
+        </svg>
 
-            
-            <span className="absolute right-full mr-4 top-1/2 -translate-y-1/2 bg-black text-white text-sm py-2 px-4 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap hidden md:block pointer-events-none shadow-xl">
-              Contact Us
-            </span>
-          </Link>
+        <span className="absolute right-full mr-4 top-1/2 -translate-y-1/2 bg-black text-white text-sm py-2 px-4 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap hidden md:block pointer-events-none shadow-xl">
+          Contact Us
+        </span>
+      </Link>
 
       {/* Companies Section */}
       <section className="py-16 md:py-24 bg-white">
